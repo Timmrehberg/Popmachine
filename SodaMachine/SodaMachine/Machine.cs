@@ -44,21 +44,27 @@ namespace SodaMachine
                     Console.WriteLine("Total is: " + grapdesoda.price);
                     CheckGrape();
                     Removechange(grapdesoda);
+                    Buymore();
                     break;
+                    
                 case "2":
                     Console.WriteLine("Total is: " + orangesoda.price);
                     CheckOrange();
                     Removechange(orangesoda);
+                    Buymore();
                     break;
                 case "3":
                     Console.WriteLine("Total is: " + meatsoda.price);
                     CheckMeat();
                     Removechange(meatsoda);
+                    Buymore();
                     break;
+              
                 default:
                     Console.WriteLine("Invalid Choice:Reenter");
-                    Buy();
+                    Buymore();
                     break;
+                    
 
             }
         }
@@ -74,6 +80,7 @@ namespace SodaMachine
             }
             else if (enterchange > can.price)
             {
+                can.ammountofCans -= 1;
                 Console.WriteLine("Change dispensing");
                 Console.WriteLine("Change is " + (change = enterchange - can.price));
                 for (int i = 0; i < 10; i++)
@@ -140,6 +147,19 @@ namespace SodaMachine
             if(inventory.machinepennies.Count <= 1)
             {
                 Console.WriteLine("Sorry for the inconvience but we have sadly ran out of change:Refund Dispensing");
+            }
+        }
+        public void Buymore()
+        {
+            Console.WriteLine("Is your transaction complete?-1.No,2.Yes");
+            string buymore = Console.ReadLine();
+            if (buymore.Equals("1"))
+            {
+                Buy();
+            } else
+            {
+                Console.WriteLine("Thanks for your service!");
+                Environment.Exit(0);
             }
         }
     }
