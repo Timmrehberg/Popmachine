@@ -98,13 +98,13 @@ namespace SodaMachine
                     }
                     
 
-                    if (change < 0.25m  && change > 0 && inventory.machinedimes.Count > 0 || inventory.machinesquarters.Count <= 0)
+                    if (change < 0.25m  && change >= 0.10m && inventory.machinedimes.Count > 0  && change > 0|| inventory.machinesquarters.Count <= 0)
                     {
                         inventory.machinedimes.RemoveAt(0);
                         change -= 0.10m;
                     }
 
-                    if (change < 0.10m  && change > 0 && inventory.machinenickels.Count > 0 || inventory.machinedimes.Count <= 0)
+                    if (change < 0.10m  && change >= 0.05m && change >0 && inventory.machinenickels.Count > 0 || inventory.machinedimes.Count <= 0)
                     {
                         inventory.machinenickels.RemoveAt(0);
                         change -= 0.05m;
