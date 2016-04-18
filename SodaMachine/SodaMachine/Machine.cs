@@ -78,7 +78,13 @@ namespace SodaMachine
                 Console.WriteLine("Sorry we only accept change and singles");
                 Buy();
             }
-            else if (enterchange > can.price)
+            else if (enterchange.Equals(can.price))
+            {
+                can.ammountofCans -= 1;
+                Console.WriteLine("No change");
+                Console.WriteLine("Can dispensing");
+            }
+            else if (enterchange > can.price )
             {
                 can.ammountofCans -= 1;
                 Console.WriteLine("Change dispensing");
@@ -92,19 +98,19 @@ namespace SodaMachine
                     }
                     
 
-                    if (change < 0.25m || inventory.machinesquarters.Count <= 0 && change > 0 && inventory.machinedimes.Count > 0)
+                    if (change < 0.25m  && change > 0 && inventory.machinedimes.Count > 0 || inventory.machinesquarters.Count <= 0)
                     {
                         inventory.machinedimes.RemoveAt(0);
                         change -= 0.10m;
                     }
 
-                    if (change < 0.10m || inventory.machinedimes.Count <= 0 && change > 0 && inventory.machinenickels.Count > 0)
+                    if (change < 0.10m  && change > 0 && inventory.machinenickels.Count > 0 || inventory.machinedimes.Count <= 0)
                     {
                         inventory.machinenickels.RemoveAt(0);
                         change -= 0.05m;
                     }
 
-                    if (change <= 0.05m || inventory.machinenickels.Count <=0 && change > 0 && inventory.machinepennies.Count > 0)
+                    if (change <= 0.05m  && change > 0 && inventory.machinepennies.Count > 0 || inventory.machinenickels.Count <= 0)
                     {
                         checkchange();
                         inventory.machinepennies.RemoveAt(0);
@@ -144,7 +150,7 @@ namespace SodaMachine
         }
         public void checkchange()
         {
-            if(inventory.machinepennies.Count <= 1)
+            if(inventory.machinepennies.Count <= 0)
             {
                 Console.WriteLine("Sorry for the inconvience but we have sadly ran out of change:Refund Dispensing");
                 Environment.Exit(0);
