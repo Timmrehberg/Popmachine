@@ -10,7 +10,7 @@ namespace SodaMachine
     {
         static void Main(string[] args)
         {
-            Inventory machine = new Inventory();
+    
             Machine Prog = new Machine();
             Prog.Buy();
         }

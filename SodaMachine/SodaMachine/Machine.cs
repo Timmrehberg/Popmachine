@@ -62,7 +62,7 @@ namespace SodaMachine
               
                 default:
                     Console.WriteLine("Invalid Choice:Reenter");
-                    Buymore();
+                    Buy();
                     break;
                     
 
@@ -147,6 +147,7 @@ namespace SodaMachine
             if(inventory.machinepennies.Count <= 1)
             {
                 Console.WriteLine("Sorry for the inconvience but we have sadly ran out of change:Refund Dispensing");
+                Environment.Exit(0);
             }
         }
         public void Buymore()
